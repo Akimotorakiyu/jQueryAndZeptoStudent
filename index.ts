@@ -19,6 +19,7 @@ class Knife {
     });
     return this.elementList;
   }
+  static fetch = fetch;
 }
 
 function knife(selectors: string) {
@@ -39,6 +40,7 @@ knife(".b").addEventListener("click", (kitchen, e) => {
 knife("#b1").addEventListener("click", e => {
   console.log("#b1 clicked");
 });
+
 knife("#b2").addEventListener("click", e => {
   console.log("#b2 clicked");
 });
