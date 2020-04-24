@@ -8,11 +8,6 @@ class Knife {
     }
   }
 
-  forEach(fn: (ele: Element, index: number, arr: Element[]) => void) {
-    this.elementList.forEach(fn, this);
-    return this;
-  }
-
   addEventListener(event: string, fun: (kitchen: Knife, event: Event) => any) {
     this.elementList.forEach(ele => {
       ele.addEventListener(event, event => {
@@ -29,9 +24,19 @@ class Knife {
     return this;
   }
 
-  filter(fn: () => Boolean) {
+  forEach(fn: (ele: Element, index: number, arr: Element[]) => void) {
+    this.elementList.forEach(fn, this);
+    return this;
+  }
+
+  map(fn: (ele: Element, index: number, arr: Element[]) => Element) {
     const newKnife = new Knife("");
-    newKnife.elementList = Array.from(this.elementList).filter(fn);
+    newKnife.elementList = this.elementList.map(fn, this);
+    return this;
+  }
+  filter(fn: (ele: Element, index: number, arr: Element[]) => Boolean) {
+    const newKnife = new Knife("");
+    newKnife.elementList = Array.from(this.elementList).filter(fn, this);
     return newKnife;
   }
 }
