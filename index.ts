@@ -9,7 +9,7 @@ class Knife {
   }
 
   addEventListener(event: string, fun: (kitchen: Knife, event: Event) => any) {
-    this.elementList.forEach(ele => {
+    this.forEach(ele => {
       ele.addEventListener(event, event => {
         fun(this, event);
       });
@@ -18,7 +18,7 @@ class Knife {
   }
 
   innerHtml(html: string) {
-    this.elementList.forEach(ele => {
+    this.forEach(ele => {
       ele.innerHTML = html;
     });
     return this;
@@ -33,6 +33,12 @@ class Knife {
     const newKnife = new Knife("");
     newKnife.elementList = Array.from(this.elementList).filter(fn, this);
     return newKnife;
+  }
+
+  remove() {
+    this.forEach(ele => {
+      ele.parentElement.removeChild(ele);
+    });
   }
 }
 
