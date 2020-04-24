@@ -29,11 +29,6 @@ class Knife {
     return this;
   }
 
-  map(fn: (ele: Element, index: number, arr: Element[]) => Element) {
-    const newKnife = new Knife("");
-    newKnife.elementList = this.elementList.map(fn, this);
-    return this;
-  }
   filter(fn: (ele: Element, index: number, arr: Element[]) => Boolean) {
     const newKnife = new Knife("");
     newKnife.elementList = Array.from(this.elementList).filter(fn, this);
