@@ -13,14 +13,26 @@ class Knife {
     });
     return this.elementList;
   }
+  innerHtml(html: string) {
+    this.elementList.forEach(ele => {
+      ele.innerHTML = html;
+    });
+    return this.elementList;
+  }
 }
 
 function knife(selectors: string) {
   return new Knife(selectors);
 }
 
+let count = 0;
+
+knife("#count").innerHtml(`${++count}`);
+
 knife(".b").addEventListener("click", (kitchen, e) => {
   console.log("b");
+  count++;
+  knife("#count").innerHtml(`${++count}`);
   console.log(kitchen, kitchen instanceof Knife, e);
 });
 
